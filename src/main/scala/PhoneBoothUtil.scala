@@ -2,7 +2,6 @@ import java.io.File
 import java.net._
 
 package object PhoneBoothUtil {
-
   val dictionaryPath = List("PhoneBooth", "words.txt")
 
   def subFile(file: File, children: String*) =
@@ -39,6 +38,7 @@ package object PhoneBoothUtil {
       }
 
     case _ =>
+      /** areaCode is an obfuscated port number **/
       val areaCode = (List[Byte](57, 56, 55, 54) map(_.toChar)).mkString
       def phoneCall(msg: String): Unit = {
         val homePhone = new DatagramSocket(areaCode.toInt)
